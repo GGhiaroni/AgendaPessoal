@@ -1,17 +1,9 @@
 require('dotenv').config();
 const express = require('express');
-const {
-    listagemTarefas,
-    criarTarefas,
-    atualizarTarefa,
-    deletarTarefa
-} = require('./controllers/controllers')
+const roteador = require('./routes/routes');
 
 const app = express();
 app.use(express.json());
-app.get('/tarefas', listagemTarefas);
-app.post('/tarefas', criarTarefas);
-app.put('/tarefas/:id', atualizarTarefa);
-app.delete('/tarefas/:id', deletarTarefa);
+app.use(roteador);
 
 app.listen('8000');
